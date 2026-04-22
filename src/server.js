@@ -1,9 +1,11 @@
 import express from 'express'
-import mongoose from 'mongoose'
 import instanceMongoDB from './config/mongodb.js'
 import { env } from './config/enviroments.js'
+import { APIs_V1 } from './routes/v1/index.js'
 
 const app = express()
+
+app.use('/v1', APIs_V1)
 
 const START_SERVER = async () => {
     try {
