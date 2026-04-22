@@ -3,7 +3,6 @@ import { StatusCodes } from 'http-status-codes'
 
 const createNew = async (req, res, next) => {
     const correctCondition = Joi.object({
-        //trim() sẽ chỉ trim vào kết quả trả về của validate async, muốn bắt lỗi luôn phải sử dụng strict
         title: Joi.string().required().min(3).max(50).trim().strict().messages({
             'any.required':'{#label} is required',
             'string.empty': '{#label} is not allowed to be empty',
@@ -17,11 +16,9 @@ const createNew = async (req, res, next) => {
     try {
         await correctCondition.validateAsync(req.body, { abortEarly: false })
 
-        // next()
+        next()
 
-        res
-            .status(StatusCodes.CREATED)
-            .json({ message: 'POST from Validation: API create new board' })
+        
     } catch (error) {
         console.log(new Error(error))
         res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
