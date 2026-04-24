@@ -11,7 +11,13 @@ const createNew = async (req, res, next) => {
             'string.max': '{#label} max 50 chars',
             'string.trim': '{#label} must not have leading or trailing whitespace'
         }),
-        description: Joi.string().required().min(3).max(256).trim().strict(),
+        description: Joi.string().required().min(3).max(256).trim().strict().messages({
+            'any.required':'{#label} is required',
+            'string.empty': '{#label} is not allowed to be empty',
+            'string.min': '{#label} min 3 chars',
+            'string.max': '{#label} max 256 chars',
+            'string.trim': '{#label} must not have leading or trailing whitespace'
+        }),
     })
 
     try {

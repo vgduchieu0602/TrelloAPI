@@ -1,6 +1,6 @@
 import express from 'express'
 import instanceMongoDB from './config/mongodb.js'
-import { env } from './config/enviroments.js'
+import { env } from './config/environments.js'
 import { APIs_V1 } from './routes/v1/index.js'
 import { errorHandlingMiddleware } from './middleware/errorHandling.middleware.js'
 

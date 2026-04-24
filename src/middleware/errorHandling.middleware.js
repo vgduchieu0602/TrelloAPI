@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { env } from "../config/main.config.js";
+import { env } from "../config/environments.js";
 
 export const errorHandlingMiddleware = (err, req, res, next) => {
     if(!err.statusCode) {
